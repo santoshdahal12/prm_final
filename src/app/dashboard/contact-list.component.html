@@ -1,0 +1,54 @@
+
+<pagination-controls (pageChange)="page = $event" id="1"
+                     maxSize="5"
+                     directionLinks="true"
+                     autoHide="true">
+</pagination-controls>
+
+<table class="table  table-hover table-bordered table-condensed table-responsive">
+  <thead>
+  <tr>
+    <th>Sr.No</th>
+    <th>Name</th>
+    <th>Company</th>
+    <th>Department</th>
+    <th>Title</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address </th>
+    <th>City </th>
+    <th>State </th>
+    <th>Zip Code </th>
+    <th>Country</th>
+    <th>Edit/Delete</th>
+  </tr>
+
+  </thead>
+  <tbody>
+
+  <!--pagination for the list of contacts-->
+
+   <tr *ngFor="let contact of contacts| paginate: {itemsPerPage: 7, currentPage:page, id: '1'}; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{contact.firstName}} {{contact.middleName}} {{contact.lastName}}</td>
+                        <td>{{contact.companyName}}</td>
+                        <td>{{contact.department}}</td>
+                        <td>{{contact.title}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.phoneNumber}}</td>
+                        <td>{{contact.addressLine1}} , {{contact.addressLine1}}</td>
+                        <td>{{contact.city}}</td>
+                        <td>{{contact.state}}</td>
+                        <td>{{contact.zipCode}}</td>
+                        <td>{{contact.country}}</td>
+                        <button type="button" class="btn btn-link btn-xs" (click)="openContactModal(contact)" style="font-size: 10px">Edit </button><span></span>
+                          <button type="button" class="btn btn-link btn-xs" (click)="deleteContact(contact)" style="color: red;font-size: 10px" >Del</button>
+
+   </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="page = $event" id="1"
+                     maxSize="5"
+                     directionLinks="true"
+                     autoHide="true">
+</pagination-controls>

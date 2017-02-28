@@ -1,0 +1,161 @@
+<form (ngSubmit)="onSubmitSearch(newSearch)" #newSearch="ngForm">
+
+  <div class="row">
+
+    <div class="col-md-1">
+
+      <div class="row">
+        <div style="text-align: right">
+          <label for="firstName" class="control-label">First Name</label>
+        </div>
+
+        <div style="text-align: right">
+          <label for="middleName" class="control-label">Middle Name</label>
+        </div>
+        <div style="text-align: right">
+          <label for="lastName" class="control-label">Last Name</label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="row">
+        <div class="myInput">
+          <input type="text"
+                 class="form-control "
+                 id="firstName"
+                 placeholder="First Name"
+                 ngModel
+                 name="firstName">
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control myInput"
+                 id="middleName"
+                 placeholder="Middle Name"
+                 ngModel
+                 name="middleName">
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control myInput"
+                 id="lastName"
+                 placeholder="Last Name"
+                 ngModel
+                 name="lastName">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-1">
+
+      <div class="row">
+        <div style="text-align: right">
+          <label for="companyName" class="control-label ">Company Name</label>
+        </div>
+
+        <div style="text-align: right">
+          <label for="department" class="control-label ">Department</label>
+        </div>
+        <div style="text-align: right">
+          <label for="title" class="control-label ">Title</label>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="row">
+        <div class="myInput">
+          <input type="text"
+                 class="form-control"
+                 id="companyName"
+                 placeholder="Company Name"
+                 ngModel
+                 name="companyName">
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control"
+                 id="department"
+                 placeholder="Department"
+                 ngModel
+                 name="department">
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control "
+                 id="title"
+                 placeholder="Title"
+                 ngModel
+                 name="title">
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-1">
+
+      <div class="row">
+
+        <div style="text-align: right">
+          <label for="city" class="control-label">City</label>
+        </div>
+
+        <div style="text-align: right">
+          <label for="state" class="control-label ">State</label>
+        </div>
+        <div style="text-align: right">
+          <label for="zipCode" class="control-label">Zip Code</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+
+      <div class="row">
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control "
+                 id="city"
+                 placeholder="Enter city name ">
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control "
+                 id="state"
+                 placeholder="Enter state name">
+
+        </div>
+
+        <div class="myInput">
+          <input type="text"
+                 class="form-control "
+                 id="zipCode"
+                 placeholder="Enter Zip Number">
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-info  btn-xs  " style="margin-left:30px ">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+  </div>
+
+
+
+</form>

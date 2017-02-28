@@ -1,0 +1,209 @@
+
+
+  <button class="btn btn-primary btn-xs"  (click)="openContactModal()">Add Contact</button>
+  <modal #myModal
+
+         [closeOnEscape]="true"
+         [closeOnOutsideClick]="false">
+    <modal-header>
+      <h2>Contact</h2>
+    </modal-header>
+    <modal-content>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="margin-20">
+            <h4>Add customer</h4>
+          </div>
+          <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+
+            <div class="row">
+
+              <div class="col-md-6">
+
+                <input type="hidden" formControlName="firstName" >
+
+
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" formControlName="firstName"
+                  >
+                  <small *ngIf="!myForm.controls['firstName'].valid" class="text-danger">
+                    Name is required
+                  </small>
+                </div>
+
+                <div class="form-group">
+                  <label>Middle Name</label>
+                  <input type="text" class="form-control" formControlName="middleName"
+                  >
+
+                </div>
+
+                <div class="form-group">
+                  <label> Last Name</label>
+                  <input type="text" class="form-control" formControlName="lastName">
+                  <small *ngIf="!myForm.controls['lastName'].valid" class="text-danger">
+                    Last Name is required
+                  </small>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <div formGroupName="company">
+                  <app-company [myForm]="myForm.controls['company']"></app-company>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <!--addresses-->
+              <div formArrayName="addresses">
+                <div *ngFor="let address of myForm.controls['addresses'].controls; let j=index" class="panel panel-default">
+                  <div class="panel-heading">
+                    <span>Address {{j + 1}}</span>
+                    <span class="glyphicon glyphicon-remove pull-right"
+                          *ngIf="myForm.controls['addresses'].controls.length > 1"
+                          (click)="removeAddress(i)"></span>
+                  </div>
+
+                  <app-address [myForm]="myForm.controls.addresses.controls[j]"></app-address>
+
+                </div>
+              </div>
+              <div class="margin-20">
+                <a (click)="addAddress()" style="cursor: default">
+                  Add another Address +
+                </a>
+              </div>
+            </div>
+            <!-- emails-->
+            <div class="row">
+
+              <div formArrayName="emails">
+                <div *ngFor=" let email of myForm.controls['emails'].controls; let i=index" class="panel panel-default">
+                  <div class="panel-heading">
+                    <span>Email {{i + 1}}</span>
+
+
+                    <span class="glyphicon glyphicon-remove pull-right"
+                          *ngIf="myForm.controls.emails.controls.length > 1"
+                          (click)="removeEmail(i)"></span>
+                  </div>
+
+
+                  <div class="panel-body">
+                    <div class="form-group col-md-6">
+                      <label>Email</label>
+                      <input type="text" class="form-control" formControlName="{{i}}">
+                      <small [hidden]="myForm.controls.emails.controls.valid" class="text-danger">
+
+                      </small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="margin-20">
+                <a (click)="addEmail()" style="cursor: default">
+                  Add another email +
+                </a>
+              </div>
+            </div>
+
+            <!--Phone Numbers-->
+            <div class="row">
+
+              <div formArrayName="phoneNumbers">
+                <div *ngFor=" let phoneNumber of myForm.controls['phoneNumbers'].controls; let i=index"
+                     class="panel panel-default">
+                  <div class="panel-heading">
+                    <span>Phone Number {{i + 1}}</span>
+
+
+                    <span class="glyphicon glyphicon-remove pull-right"
+                          *ngIf="myForm.controls.phoneNumbers.controls.length > 1"
+                          (click)="removePhoneNumber(i)"></span>
+                  </div>
+
+
+                  <div class="panel-body">
+                    <div class="form-group col-md-6">
+                      <label>Phone Number</label>
+                      <input type="text" class="form-control" formControlName="{{i}}">
+                      <small [hidden]="myForm.controls.phoneNumbers.controls.valid" class="text-danger">
+
+                      </small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="margin-20">
+                <a (click)="addPhoneNumber()" style="cursor: default">
+                  Add another Phone Number +
+                </a>
+              </div>
+            </div>
+            <!-- Social Networking Profiles-->
+            <div class="row">
+
+              <div formArrayName="socialNetworkingProfiles">
+                <div
+                  *ngFor=" let socialNetworkingProfile of myForm.controls['socialNetworkingProfiles'].controls;let k=index"
+                  class="panel panel-default">
+                  <div class="panel-heading">
+                    <span>Social Networking Profile {{k + 1}}</span>
+
+
+                    <span class="glyphicon glyphicon-remove pull-right"
+                          *ngIf="myForm.controls.socialNetworkingProfiles.controls.length > 1"
+                          (click)="removeSocialNetworkingProfiles(k)"></span>
+                  </div>
+
+
+                  <div class="panel-body">
+                    <div class="form-group col-md-6">
+                      <label>Social Networking Profile</label>
+                      <input type="text" class="form-control" formControlName="{{k}}">
+                      <small [hidden]="myForm.controls.socialNetworkingProfiles.controls.valid" class="text-danger">
+
+                      </small>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="margin-20">
+                <a (click)="addSocialNetworkingProfiles()" style="cursor: default">
+                  Add another Social Networking Profile +
+                </a>
+              </div>
+            </div>
+
+
+            <div class="margin-20">
+              <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+            </div>
+            <div class="clearfix"></div>
+
+          </form>
+        </div>
+      </div>
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" (click)="myModal.close()">close</button>
+    </modal-footer>
+  </modal>
+
+
+

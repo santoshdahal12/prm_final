@@ -1,0 +1,14 @@
+.myInput input {
+  height: 20px;
+  font-size: 10px;
+  line-height: 14px;
+}
+.myInput{
+  margin-bottom: 5px;
+  margin-top: 5px;
+  align-content: center;
+}
+label{
+  font-size:10px;
+  line-height: 14px;
+}
