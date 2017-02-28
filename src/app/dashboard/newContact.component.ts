@@ -23,10 +23,9 @@ export class NewContact implements OnInit{
 
   /* see the changes in myModal in view*/
 
-  myForm: FormGroup;
-  static a = 0;
-  b: any;
-  sub: any;
+  contactForm: FormGroup;
+
+  /* see the changes in myModal in view*/
   @ViewChild('myModal') myModal:Modal;
   @Input() contact= new Contact();
 
@@ -35,7 +34,7 @@ export class NewContact implements OnInit{
  }
 
   ngOnInit() {
-    this.myForm = new FormGroup({
+    this.contactForm = new FormGroup({
 
       'id': new FormControl(''),
       'firstName': new FormControl('', Validators.required),
@@ -69,15 +68,15 @@ export class NewContact implements OnInit{
       /*this.openContactModal(res.value);*/
 
       /* reactive form */
-      this.myForm.controls['id'].setValue(contactToEdit.value.id);
-      this.myForm.controls['firstName'].setValue(contactToEdit.value.firstName);
-      this.myForm.controls['middleName'].setValue(contactToEdit.value.middleName);
-      this.myForm.controls['lastName'].setValue(contactToEdit.value.lastName);
-      this.myForm.controls['emails'].setValue(contactToEdit.value.emails);
-      this.myForm.controls['phoneNumbers'].setValue(contactToEdit.value.phoneNumbers);
-      this.myForm.controls['socialNetworkingProfiles'].setValue(contactToEdit.value.socialNetworkingProfiles);
-      this.myForm.controls['addresses'].setValue(contactToEdit.value.addresses);
-      this.myForm.controls['company'].setValue(contactToEdit.value.company);
+      this.contactForm.controls['id'].setValue(contactToEdit.value.id);
+      this.contactForm.controls['firstName'].setValue(contactToEdit.value.firstName);
+      this.contactForm.controls['middleName'].setValue(contactToEdit.value.middleName);
+      this.contactForm.controls['lastName'].setValue(contactToEdit.value.lastName);
+      this.contactForm.controls['emails'].setValue(contactToEdit.value.emails);
+      this.contactForm.controls['phoneNumbers'].setValue(contactToEdit.value.phoneNumbers);
+      this.contactForm.controls['socialNetworkingProfiles'].setValue(contactToEdit.value.socialNetworkingProfiles);
+      this.contactForm.controls['addresses'].setValue(contactToEdit.value.addresses);
+      this.contactForm.controls['company'].setValue(contactToEdit.value.company);
     }
     });
     }
@@ -91,7 +90,7 @@ export class NewContact implements OnInit{
   /* newContact  to service layer*/
 
   onSubmit(){
-    this.contact=<Contact>this.myForm.value;
+    this.contact=<Contact>this.contactForm.value;
 
     console.log('I m here');
     if(this.contact.id==null){
@@ -127,42 +126,42 @@ export class NewContact implements OnInit{
 
 
   addAddress() {
-    const control = <FormArray>this.myForm.controls['addresses'];
+    const control = <FormArray>this.contactForm.controls['addresses'];
     control.push(this.initAddress());
   }
 
   removeAddress(i: number) {
-    const control = <FormArray>this.myForm.controls['addresses'];
+    const control = <FormArray>this.contactForm.controls['addresses'];
     control.removeAt(i);
   }
 
   addEmail() {
-    (<FormArray>this.myForm.controls['emails']).push(new FormControl(
+    (<FormArray>this.contactForm.controls['emails']).push(new FormControl(
       'example@email.com', Validators.required));
   }
 
   removeEmail(i) {
-    (<FormArray>this.myForm.controls['emails']).removeAt(i);
+    (<FormArray>this.contactForm.controls['emails']).removeAt(i);
 
   }
 
   addPhoneNumber() {
-    (<FormArray>this.myForm.controls['phoneNumbers']).push(new FormControl(
+    (<FormArray>this.contactForm.controls['phoneNumbers']).push(new FormControl(
       '(xxx)xxx-xxxx', Validators.required));
   }
 
   removePhoneNumber(i) {
-    (<FormArray>this.myForm.controls['phoneNumbers']).removeAt(i);
+    (<FormArray>this.contactForm.controls['phoneNumbers']).removeAt(i);
 
   }
 
   addSocialNetworkingProfiles() {
-    (<FormArray>this.myForm.controls['socialNetworkingProfiles']).push(new FormControl(
+    (<FormArray>this.contactForm.controls['socialNetworkingProfiles']).push(new FormControl(
       '', Validators.required));
   }
 
   removeSocialNetworkingProfiles(i) {
-    (<FormArray>this.myForm.controls['socialNetworkingProfiles']).removeAt(i);
+    (<FormArray>this.contactForm.controls['socialNetworkingProfiles']).removeAt(i);
 
   }
 

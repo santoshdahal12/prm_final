@@ -1,9 +1,9 @@
-<div class="panel-body" [formGroup]="myForm">
+<div class="panel-body" [formGroup]="contactForm">
 
   <div class="form-group col-md-6">
     <label>Address Line1</label>
     <input type="text" class="form-control" formControlName="addressLine1">
-    <small [hidden]="myForm.controls.addressLine1.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.addressLine1.valid" class="text-danger">
       Address Line1 is required
     </small>
   </div>
@@ -11,7 +11,7 @@
   <div class="form-group col-md-6">
     <label>Address Line2</label>
     <input type="text" class="form-control" formControlName="addressLine2">
-    <small [hidden]="myForm.controls.addressLine2.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.addressLine2.valid" class="text-danger">
       Address Line2 is required
     </small>
   </div>
@@ -19,7 +19,7 @@
   <div class="form-group col-md-6">
     <label>city</label>
     <input type="text" class="form-control" formControlName="city">
-    <small [hidden]="myForm.controls.city.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.city.valid" class="text-danger">
       City is required
     </small>
   </div>
@@ -27,21 +27,21 @@
   <div class="form-group col-md-6">
     <label>State</label>
     <input type="text" class="form-control" formControlName="state">
-    <small [hidden]="myForm.controls.state.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.state.valid" class="text-danger">
       State is required
     </small>
   </div>
   <div class="form-group col-md-6">
     <label>ZipCode</label>
     <input type="text" class="form-control" formControlName="zipCode">
-    <small [hidden]="myForm.controls.zipCode.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.zipCode.valid" class="text-danger">
       Zip Code is required
     </small>
   </div>
   <div class="form-group col-md-6">
     <label>Country</label>
     <input type="text" class="form-control" formControlName="country">
-    <small [hidden]="myForm.controls.country.valid" class="text-danger">
+    <small [hidden]="contactForm.controls.country.valid" class="text-danger">
       Country is required
     </small>
   </div>

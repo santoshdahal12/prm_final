@@ -7,7 +7,7 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['company.component.css']
 })
 export class CompanyComponent implements OnInit {
-  @Input()myForm:FormGroup;
+  @Input()contactForm:FormGroup;
   constructor() { }
 
   ngOnInit() {

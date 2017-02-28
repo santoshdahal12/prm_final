@@ -15,7 +15,7 @@
           <div class="margin-20">
             <h4>Add customer</h4>
           </div>
-          <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
+          <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
 
             <div class="row">
 
@@ -28,7 +28,7 @@
                   <label>First Name</label>
                   <input type="text" class="form-control" formControlName="firstName"
                   >
-                  <small *ngIf="!myForm.controls['firstName'].valid" class="text-danger">
+                  <small *ngIf="!contactForm.controls['firstName'].valid" class="text-danger">
                     Name is required
                   </small>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="form-group">
                   <label> Last Name</label>
                   <input type="text" class="form-control" formControlName="lastName">
-                  <small *ngIf="!myForm.controls['lastName'].valid" class="text-danger">
+                  <small *ngIf="!contactForm.controls['lastName'].valid" class="text-danger">
                     Last Name is required
                   </small>
                 </div>
@@ -52,7 +52,7 @@
 
               <div class="col-md-6">
                 <div formGroupName="company">
-                  <app-company [myForm]="myForm.controls['company']"></app-company>
+                  <app-company [contactForm]="contactForm.controls['company']"></app-company>
 
                 </div>
               </div>
@@ -62,15 +62,15 @@
             <div class="row">
               <!--addresses-->
               <div formArrayName="addresses">
-                <div *ngFor="let address of myForm.controls['addresses'].controls; let j=index" class="panel panel-default">
+                <div *ngFor="let address of contactForm.controls['addresses'].controls; let j=index" class="panel panel-default">
                   <div class="panel-heading">
                     <span>Address {{j + 1}}</span>
                     <span class="glyphicon glyphicon-remove pull-right"
-                          *ngIf="myForm.controls['addresses'].controls.length > 1"
+                          *ngIf="contactForm.controls['addresses'].controls.length > 1"
                           (click)="removeAddress(i)"></span>
                   </div>
 
-                  <app-address [myForm]="myForm.controls.addresses.controls[j]"></app-address>
+                  <app-address [contactForm]="contactForm.controls.addresses.controls[j]"></app-address>
 
                 </div>
               </div>
@@ -84,13 +84,13 @@
             <div class="row">
 
               <div formArrayName="emails">
-                <div *ngFor=" let email of myForm.controls['emails'].controls; let i=index" class="panel panel-default">
+                <div *ngFor=" let email of contactForm.controls['emails'].controls; let i=index" class="panel panel-default">
                   <div class="panel-heading">
                     <span>Email {{i + 1}}</span>
 
 
                     <span class="glyphicon glyphicon-remove pull-right"
-                          *ngIf="myForm.controls.emails.controls.length > 1"
+                          *ngIf="contactForm.controls.emails.controls.length > 1"
                           (click)="removeEmail(i)"></span>
                   </div>
 
@@ -99,7 +99,7 @@
                     <div class="form-group col-md-6">
                       <label>Email</label>
                       <input type="text" class="form-control" formControlName="{{i}}">
-                      <small [hidden]="myForm.controls.emails.controls.valid" class="text-danger">
+                      <small [hidden]="contactForm.controls.emails.controls.valid" class="text-danger">
 
                       </small>
                     </div>
@@ -120,14 +120,14 @@
             <div class="row">
 
               <div formArrayName="phoneNumbers">
-                <div *ngFor=" let phoneNumber of myForm.controls['phoneNumbers'].controls; let i=index"
+                <div *ngFor=" let phoneNumber of contactForm.controls['phoneNumbers'].controls; let i=index"
                      class="panel panel-default">
                   <div class="panel-heading">
                     <span>Phone Number {{i + 1}}</span>
 
 
                     <span class="glyphicon glyphicon-remove pull-right"
-                          *ngIf="myForm.controls.phoneNumbers.controls.length > 1"
+                          *ngIf="contactForm.controls.phoneNumbers.controls.length > 1"
                           (click)="removePhoneNumber(i)"></span>
                   </div>
 
@@ -136,7 +136,7 @@
                     <div class="form-group col-md-6">
                       <label>Phone Number</label>
                       <input type="text" class="form-control" formControlName="{{i}}">
-                      <small [hidden]="myForm.controls.phoneNumbers.controls.valid" class="text-danger">
+                      <small [hidden]="contactForm.controls.phoneNumbers.controls.valid" class="text-danger">
 
                       </small>
                     </div>
@@ -157,14 +157,14 @@
 
               <div formArrayName="socialNetworkingProfiles">
                 <div
-                  *ngFor=" let socialNetworkingProfile of myForm.controls['socialNetworkingProfiles'].controls;let k=index"
+                  *ngFor=" let socialNetworkingProfile of contactForm.controls['socialNetworkingProfiles'].controls;let k=index"
                   class="panel panel-default">
                   <div class="panel-heading">
                     <span>Social Networking Profile {{k + 1}}</span>
 
 
                     <span class="glyphicon glyphicon-remove pull-right"
-                          *ngIf="myForm.controls.socialNetworkingProfiles.controls.length > 1"
+                          *ngIf="contactForm.controls.socialNetworkingProfiles.controls.length > 1"
                           (click)="removeSocialNetworkingProfiles(k)"></span>
                   </div>
 
@@ -173,7 +173,7 @@
                     <div class="form-group col-md-6">
                       <label>Social Networking Profile</label>
                       <input type="text" class="form-control" formControlName="{{k}}">
-                      <small [hidden]="myForm.controls.socialNetworkingProfiles.controls.valid" class="text-danger">
+                      <small [hidden]="contactForm.controls.socialNetworkingProfiles.controls.valid" class="text-danger">
 
                       </small>
                     </div>
@@ -192,7 +192,7 @@
 
 
             <div class="margin-20">
-              <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+              <button type="submit" class="btn btn-primary pull-right" [disabled]="!contactForm.valid">Submit</button>
             </div>
             <div class="clearfix"></div>
 

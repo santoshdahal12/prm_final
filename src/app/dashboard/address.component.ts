@@ -7,7 +7,7 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['address.component.css']
 })
 export class AddressComponent implements OnInit {
-  @Input()myForm:FormGroup;
+  @Input()contactForm:FormGroup;
   constructor() { }
 
   ngOnInit() {

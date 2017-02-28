@@ -22,7 +22,7 @@ export class ContactListComponent implements OnInit {
   ngOnInit() {
 
     ///pending
-    this.contactService.getContacts().subscribe((contactList:Contact[])=>this.contacts=contactList) ;
+    /*this.contactService.getContacts().subscribe((contactList:Contact[])=>this.contacts=contactList) ;*/
 
   }
 
