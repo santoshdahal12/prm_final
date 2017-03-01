@@ -51,8 +51,9 @@ export class NewContactService {
     const body=JSON.stringify(contact);
     const headers=new Headers;
     headers.append('Content_Type','application/json');
+   /* headers.append( 'Access-Control-Allow-Origin', '*');*/
 
-    return this.http.put('https://csmmockdatabase.firebaseio.com/contact.json',body,{headers:headers})
+    return this.http.post('http://localhost:8080/api/contacts',body,{headers:headers})
       .map((data:Response)=>data.json());
 
 

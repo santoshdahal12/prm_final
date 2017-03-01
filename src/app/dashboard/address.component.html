@@ -1,5 +1,5 @@
 <div class="panel-body" [formGroup]="contactForm">
-
+  <input type="hidden" formControlName="id">
   <div class="form-group col-md-6">
     <label>Address Line1</label>
     <input type="text" class="form-control" formControlName="addressLine1">
@@ -25,27 +25,52 @@
   </div>
 
   <div class="form-group col-md-6">
-    <label>State</label>
-    <input type="text" class="form-control" formControlName="state">
-    <small [hidden]="contactForm.controls.state.valid" class="text-danger">
-      State is required
-    </small>
-  </div>
-  <div class="form-group col-md-6">
     <label>ZipCode</label>
     <input type="text" class="form-control" formControlName="zipCode">
     <small [hidden]="contactForm.controls.zipCode.valid" class="text-danger">
       Zip Code is required
     </small>
   </div>
-  <div class="form-group col-md-6">
+  <!--<div class="form-group col-md-6">
     <label>Country</label>
     <input type="text" class="form-control" formControlName="country">
     <small [hidden]="contactForm.controls.country.valid" class="text-danger">
       Country is required
     </small>
+  </div>-->
+  <div formGroupName="state">
+    <div class="form-group col-md-6">
+      <input type="hidden" formControlName="id">
+      <label>State</label>
+      <input type="text" class="form-control" formControlName="name">
+      <!--<small [hidden]="contactForm.controls.name.valid" class="text-danger">
+        State is required
+      </small>-->
+    </div>
+    <div formGroupName="country">
+    <div class="form-group col-md-6">
+      <input type="hidden" formControlName="id">
+      <label>Country</label>
+      <input type="text" class="form-control" formControlName="name">
+      <!--<small [hidden]="contactForm.controls.name.valid" class="text-danger">
+        Country is required
+      </small>-->
+    </div>
   </div>
 
 </div>
+
+<!--
+<div formGroupName="title">
+
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="hidden" class="form-control" formControlName="id">
+                      <input type="text" class="form-control" formControlName="name"
+                      >
+                    </div>
+
+                  </div>
+-->
 
 

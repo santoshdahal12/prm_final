@@ -2,10 +2,9 @@ import {Component, OnInit, ViewChild, Input} from '@angular/core';
 
 import {NewContactService} from "../service/new-contact.service";
 import {Modal} from "ng2-modal";
-import {Contact} from "../contact";
+import {Contact, EmailAddress} from "../contact";
 import {Subscription} from "rxjs";
 import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
-
 
 
 @Component({
@@ -17,7 +16,7 @@ import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
 })
 
 
-export class NewContact implements OnInit{
+export class NewContact implements OnInit {
 
   private subscription: Subscription
 
@@ -26,12 +25,15 @@ export class NewContact implements OnInit{
   contactForm: FormGroup;
 
   /* see the changes in myModal in view*/
-  @ViewChild('myModal') myModal:Modal;
-  @Input() contact= new Contact();
+  @ViewChild('myModal') myModal: Modal;
+  @Input() contact = new Contact(null,null,null,null,true, null,
+  null, null, null, null,  null, null, null  );
 
+  @Input()
+  types: any = ['MOBILE', 'HOME'];
 
- constructor(private newContactService:NewContactService) {
- }
+  constructor(private newContactService: NewContactService) {
+  }
 
   ngOnInit() {
     this.contactForm = new FormGroup({
@@ -40,87 +42,149 @@ export class NewContact implements OnInit{
       'firstName': new FormControl('', Validators.required),
       'middleName': new FormControl(''),
       'lastName': new FormControl('', Validators.required),
-      'emails': new FormArray([
-        new FormControl('example@email.com')
-      ]),
+
+
+      'emailAddresses': new FormArray([this.initEmail()]),
+
+
       'phoneNumbers': new FormArray([
-        new FormControl('(xxx)xxx-xxxx')
+        this.initPhoneNumber()
       ]),
-      'socialNetworkingProfiles': new FormArray([
-        new FormControl('linkedIn')
+
+      'socialAccounts': new FormArray([
+        this.initSocialAccounts()
       ]),
       'addresses': new FormArray([this.initAddress()]),
-      'company': new FormGroup({
+      'customer': new FormGroup({
+        'id': new FormControl(''),
         'name': new FormControl('', Validators.required),
-        'department': new FormControl('', Validators.required),
-        'title': new FormControl('', Validators.required),
+        'DUNSNumber': new FormControl(''),
+      }),
+      'title': new FormGroup({
+        'id': new FormControl(''),
+        'name': new FormControl('', Validators.required),
+      }),
+      'department': new FormGroup({
+        'id': new FormControl(''),
+        'name': new FormControl('', Validators.required),
       }),
     });
 
-   /* the listner is new contact and its going to to open a contact modal form with the current contact passed to it*/
+    /* the listner is new contact and its going to to open a contact modal form with the current contact passed to it*/
 
     this.subscription = this.newContactService.notifyObservable$.subscribe((contactToEdit) => {
-    if (contactToEdit.hasOwnProperty('option') && contactToEdit.option === 'openContactModal') {
-    console.log(contactToEdit.value);
-    console.log(contactToEdit);
+      if (contactToEdit.hasOwnProperty('option') && contactToEdit.option === 'openContactModal') {
+        console.log(contactToEdit.value);
+        console.log(contactToEdit);
 
-    // perform your other action from here
-      /*this.openContactModal(res.value);*/
+        // perform your other action from here
+        /*this.openContactModal(res.value);*/
 
-      /* reactive form */
-      this.contactForm.controls['id'].setValue(contactToEdit.value.id);
-      this.contactForm.controls['firstName'].setValue(contactToEdit.value.firstName);
-      this.contactForm.controls['middleName'].setValue(contactToEdit.value.middleName);
-      this.contactForm.controls['lastName'].setValue(contactToEdit.value.lastName);
-      this.contactForm.controls['emails'].setValue(contactToEdit.value.emails);
-      this.contactForm.controls['phoneNumbers'].setValue(contactToEdit.value.phoneNumbers);
-      this.contactForm.controls['socialNetworkingProfiles'].setValue(contactToEdit.value.socialNetworkingProfiles);
-      this.contactForm.controls['addresses'].setValue(contactToEdit.value.addresses);
-      this.contactForm.controls['company'].setValue(contactToEdit.value.company);
-    }
+        /* reactive form */
+        this.contactForm.controls['id'].setValue(contactToEdit.value.id);
+        this.contactForm.controls['firstName'].setValue(contactToEdit.value.firstName);
+        this.contactForm.controls['middleName'].setValue(contactToEdit.value.middleName);
+        this.contactForm.controls['lastName'].setValue(contactToEdit.value.lastName);
+        this.contactForm.controls['emailAddresses'].setValue(contactToEdit.value.emailAddresses);
+        this.contactForm.controls['phoneNumbers'].setValue(contactToEdit.value.phoneNumbers);
+        this.contactForm.controls['socialAccounts'].setValue(contactToEdit.value.socialAccounts);
+        this.contactForm.controls['addresses'].setValue(contactToEdit.value.addresses);
+        this.contactForm.controls['customer'].setValue(contactToEdit.value.customer);
+      }
     });
-    }
+  }
 
-   ngOnDestroy() {
-   this.subscription.unsubscribe();
-   }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 
   /*a new contact from newAddress.component*/
   /* newContact  to service layer*/
 
-  onSubmit(){
+  onSubmit() {
     this.contact=<Contact>this.contactForm.value;
+    this.contact.isActive=false;
+    this.contact.state='LEAD';
+    this.contact.customer.customerCode=null;
+
 
     console.log('I m here');
-    if(this.contact.id==null){
-     this.contact.id=10;
-
-    this.newContactService.addNewContact(this.contact).subscribe(data=>console.log(data));}
 
 
-    else{
-      this.newContactService.editContact(this.contact).subscribe(data=>console.log(data))
-    }
+     console.log(JSON.stringify(this.contactForm.value));
+
+   /* console.log(this.contactForm.value.json());*/
+
+
+    this.newContactService.addNewContact(this.contactForm.value).subscribe(
+      data=>console.log(data),
+      error=>console.log(error)
+
+      /*
+       this.router.navigate(['/path_to_login_page']);
+       return error.status;
+      * */
+    );
+
+
+    /* else{*/
+    /*  this.newContactService.editContact(this.contact).subscribe(data=>console.log(data))*/
+    /*}*/
     /*this.myModal.close()*/
+    /*this.contactForm.reset();*/
     this.myModal.close();
 
   }
 
-  openContactModal(contact){
+  openContactModal(contact) {
 
-    this.contact=contact;
-    this.myModal.open(contact);
+    this.contact = contact;
+
+    this.myModal.open();
   }
 
   initAddress() {
     return new FormGroup({
+      'id': new FormControl(''),
       'addressLine1': new FormControl('', Validators.required),
       'addressLine2': new FormControl('', Validators.required),
       'city': new FormControl('', Validators.required),
-      'state': new FormControl('', Validators.required),
       'zipCode': new FormControl('', Validators.required),
-      'country': new FormControl('', Validators.required)
+      'state': new FormGroup({
+        'id': new FormControl(''),
+        'name': new FormControl('', Validators.required),
+        'country': new FormGroup({
+          'id': new FormControl(''),
+          'name': new FormControl('', Validators.required)
+        })
+      }),
+
+    });
+  }
+
+  initEmail() {
+    return new FormGroup({
+      'id': new FormControl(''),
+      'emailAddress': new FormControl('', Validators.required),
+
+    });
+  }
+
+  initSocialAccounts() {
+    return new FormGroup({
+      'id': new FormControl(''),
+      'profileName': new FormControl('', Validators.required),
+      'url': new FormControl('', Validators.required),
+
+    });
+  }
+
+  initPhoneNumber() {
+    return new FormGroup({
+      'id': new FormControl(''),
+      'phoneNumber': new FormControl('(xxx)xxxxxxx'),
+      'phoneType': new FormControl('MOBILE'),
     });
   }
 
@@ -136,37 +200,47 @@ export class NewContact implements OnInit{
   }
 
   addEmail() {
-    (<FormArray>this.contactForm.controls['emails']).push(new FormControl(
-      'example@email.com', Validators.required));
+    /*(<FormArray>this.contactForm.controls['emailAddresses']).push(new FormControl(
+     'example@email.com', Validators.required));*/
+    const control = <FormArray>this.contactForm.controls['emailAddresses'];
+    control.push(this.initEmail());
   }
 
   removeEmail(i) {
-    (<FormArray>this.contactForm.controls['emails']).removeAt(i);
+    /*(<FormArray>this.contactForm.controls['emailAddresses']).removeAt(i);*/
+
+    const control = <FormArray>this.contactForm.controls['emailAddresses'];
+    control.removeAt(i);
 
   }
 
   addPhoneNumber() {
-    (<FormArray>this.contactForm.controls['phoneNumbers']).push(new FormControl(
-      '(xxx)xxx-xxxx', Validators.required));
+    /*(<FormArray>this.contactForm.controls['phoneNumbers']).push(new FormControl(
+     '(xxx)xxx-xxxx', Validators.required));*/
+    const control = <FormArray>this.contactForm.controls['phoneNumbers'];
+    control.push(this.initPhoneNumber());
   }
 
   removePhoneNumber(i) {
-    (<FormArray>this.contactForm.controls['phoneNumbers']).removeAt(i);
+    /*(<FormArray>this.contactForm.controls['phoneNumbers']).removeAt(i);*/
+    const control = <FormArray>this.contactForm.controls['phoneNumbers'];
+    control.removeAt(i);
 
   }
 
   addSocialNetworkingProfiles() {
-    (<FormArray>this.contactForm.controls['socialNetworkingProfiles']).push(new FormControl(
-      '', Validators.required));
+    /* (<FormArray>this.contactForm.controls['socialAccounts']).push(new FormControl(
+     '', Validators.required));*/
+    const control = <FormArray>this.contactForm.controls['socialAccounts'];
+    control.push(this.initSocialAccounts());
   }
 
   removeSocialNetworkingProfiles(i) {
-    (<FormArray>this.contactForm.controls['socialNetworkingProfiles']).removeAt(i);
+    /* (<FormArray>this.contactForm.controls['socialAccounts']).removeAt(i);*/
+    const control = <FormArray>this.contactForm.controls['socialAccounts'];
+    control.removeAt(i);
 
   }
-
-
-
 
 
 }

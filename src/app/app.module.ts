@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {HttpModule, BrowserXhr} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NewContact } from './dashboard/newContact.component';
@@ -17,7 +17,8 @@ import {ModalModule} from "ng2-modal";
 import { OptionsComponent } from './dashboard/options.component';
 import { OrderByPipe } from './order-by.pipe';
 import { AddressComponent } from './dashboard/address.component';
-import { CompanyComponent } from './dashboard/company.component';
+import { CompanyComponent } from './dashboard/customer.component';
+import {CustExtBrowserXhr} from "../cust-ext-browser-xhr";
 
 
 @NgModule({
@@ -29,13 +30,9 @@ import { CompanyComponent } from './dashboard/company.component';
     ContactListComponent,
     PageNotFoundComponent,
     FooterComponent,
-
     OptionsComponent,
-
     OrderByPipe,
-
     AddressComponent,
-
     CompanyComponent,
 
 

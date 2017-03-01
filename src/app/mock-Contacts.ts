@@ -1,170 +1,131 @@
-
-
-
-import {Contact} from "./contact";
-
-
-export const Contacts: Contact[] = [
-  {
-    id:1,
-    firstName : "Deus Ex",
-    middleName: " Xbox",
-    lastName: " Xbox One, PS4, PC",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "123456",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:2,
-    firstName : "Deus Ex",
-    middleName: " Xbox ",
-    lastName: " Xbox",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "123456789",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:3,
-    firstName : "Deus Ex",
-    middleName: " Xbox ",
-    lastName: " Xbox ",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "123456789",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:4,
-    firstName : "Deus Ex",
-    middleName: " Xbox",
-    lastName: " Xbox ",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "12323456789",
-    socialNetworkingProfiles:" Xbox",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:5,
-    firstName : "Deus Ex",
-    middleName: " Xbox",
-    lastName: " Xbox",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "122345678",
-    socialNetworkingProfiles:" Xbox ",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:6,
-    firstName : "Deus Ex",
-    middleName: " Xbox ",
-    lastName: " Xbox ",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "1323456789",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:7,
-    firstName : "Deus Ex",
-    middleName: " Xbox",
-    lastName: " Xbox One, PS4, PC",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: "123456789",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:8,
-    firstName : "Deus Ex",
-    middleName: " Xbox One, PS4, PC",
-    lastName: " Xbox One, PS4, PC",
-    companyName: " Xbox One, PS4, PC",
-    department: " Xbox One, PS4, PC",
-    title: " Xbox One, PS4, PC",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: " 1234567",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " Xbox One, PS4, PC",
-    addressLine2: " Xbox One, PS4, PC",
-    city: " Xbox One, PS4, PC",
-    state: " Xbox One, PS4, PC",
-    zipCode: " Xbox One, PS4, PC",
-    country : "USA"
-  },
-  {
-    id:10,
-    firstName : "John",
-    middleName: " X",
-    lastName: " Smith",
-    companyName: " ABC",
-    department: " Y",
-    title: " Boss",
-    email: "Xbox One, PS4, PC",
-    phoneNumber: " 1234576890",
-    socialNetworkingProfiles:" Xbox One, PS4, PC",
-    addressLine1: " 1000 N 4th Street",
-    addressLine2: " #125",
-    city: "Fairfield",
-    state: "Iowa",
-    zipCode: " 52557",
-    country : "USA"
+/*
+/!*
+{
+  "id":  null,
+  "notes":  [],
+  "firstname":  "Firstname",
+  "middleName":  null,
+  "lastname":  "Lastname",
+  "customer":  {
+    "id"  :    null,
+    "notes"  :    [],
+    "name"  :    "Excellerent",
+    "customerCode"  :    null,
+    "dunsnumber"  :    null
   }
-];
+,
+  "title":  {
+    "id"  :    null,
+    "name"  :    "Seniour Manager"
+  }
+,
+  "department":  {
+    "id"  :    null,
+    "name"  :    "Human Resource"
+  }
+,
+  "isActive":  true,
+  "state":  "LEAD",
+  "emailAddresses":
+  [{"id": null, "emailAddress": "example@emmail.com", "primary": false}],
+    "phoneNumbers":  [],
+  "addresses":  [{
+    "id": null,
+    "notes": [],
+    "addressLine1": "1000 4th st.",
+    "addressLine2": null,
+    "zipcode": "52557",
+    "city": "fairfield",
+    "state": {"id": null, "name": "ia", "country": {"id": null, "name": "usa"}},
+    "isPrimary": null,
+    "coutnry": {"id": null, "name": "usa"}
+  }],
+  "socialAccounts":  [],
+  "primaryEmailAddress":  null
+}
+*!/
+
+
+{
+  "id"
+:
+  "", "firstName"
+:
+  "SANTOSH", "middleName"
+:
+  "", "lastName"
+:
+  "DAHAL", "emailAddresses"
+:
+  [{"id": "", "emailAddress": "santoshdahal2072@gmail.com"}, {"id": "", "emailAddress": "ASDAS"}], "phoneNumbers"
+:
+  [{"id": "", "phoneNumber": "(xxx)xxxxxxx", "phoneType": "MOBILE"}, {
+    "id": "",
+    "phoneNumber": "(xxx)xxxxxxx",
+    "phoneType": "MOBILE"
+  }], "socialAccounts"
+:
+  [{"id": "", "name": "ASDAFS"}, {"id": "", "name": "SADAF"}], "addresses"
+:
+  [{
+    "id": "",
+    "addressLine1": "4757 N Woodrow Ave",
+    "addressLine2": "Unit#125",
+    "city": "Fresno",
+    "zipCode": "93726",
+    "state": {"id": "", "name": "CA", "country": {"id": "", "name": "United States"}}
+  }, {
+    "id": "",
+    "addressLine1": "1000N 4th Street, fairfield, Iowa",
+    "addressLine2": "ASDASD",
+    "city": "Fairfield",
+    "zipCode": "52557",
+    "state": {"id": "", "name": "IA", "country": {"id": "", "name": "United States"}}
+  }, {
+    "id": "",
+    "addressLine1": "SADASD",
+    "addressLine2": "QEQDSW",
+    "city": "WDAS",
+    "zipCode": "QDA",
+    "state": {"id": "", "name": "SAD", "country": {"id": "", "name": "ASDAS"}}
+  }], "customer"
+:
+  {
+    "id"
+  :
+    "", "name"
+  :
+    "asdvahgsdhjasgdhj", "DUNSNumber"
+  :
+    "hahsghdhjhasdjh", "customerCode"
+  :
+    null
+  }
+,
+  "title"
+:
+  {
+    "id"
+  :
+    "", "name"
+  :
+    "hsajKHJAKDH"
+  }
+,
+  "department"
+:
+  {
+    "id"
+  :
+    "", "name"
+  :
+    "hasjkHSdjakdh"
+  }
+,
+  "isActive"
+:
+  false, "state"
+:
+  "LEAD"
+}
+*/
